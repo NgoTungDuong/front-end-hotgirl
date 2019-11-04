@@ -1,0 +1,10 @@
+body {
+    background: #d6d2d2;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+.search {
+    width: 45%;
+}
