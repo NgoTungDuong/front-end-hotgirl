@@ -115,7 +115,7 @@ export default class Homescreen extends Component {
         } else {
             // fetch to api server
             try {
-                const result = await fetch(`http://hotgirl-back-end.herokuapp.com/api/auth/login`, {
+                const result = await fetch(`https://hotgirl-back-end.herokuapp.com/api/auth/login`, {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
