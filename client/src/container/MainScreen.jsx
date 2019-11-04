@@ -87,7 +87,7 @@ export default class Homescreen extends Component {
         } else {
             // fetch to api server
             try {
-                const result = await fetch(`http://hotgirl-back-end.herokuapp.com/api/auth/register`, {
+                const result = await fetch(`https://hotgirl-back-end.herokuapp.com/api/auth/register`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -115,7 +115,7 @@ export default class Homescreen extends Component {
         } else {
             // fetch to api server
             try {
-                const result = await fetch(`http://hotgirl-back-end.herokuapp.com/api/auth/login`, {
+                const result = await fetch(`https://hotgirl-back-end.herokuapp.com/api/auth/login`, {
                     method: 'POST',
                     credentials: 'include',
                     headers: {
@@ -210,7 +210,7 @@ export default class Homescreen extends Component {
         this.setState({
             authUser: {}
         });
-        const result = await fetch(`http://hotgirl-back-end.herokuapp.com/api/auth/logout`, {
+        const result = await fetch(`https://hotgirl-back-end.herokuapp.com/api/auth/logout`, {
             credentials: 'include',
             method: "GET",
         }).then((res) => res.json());
