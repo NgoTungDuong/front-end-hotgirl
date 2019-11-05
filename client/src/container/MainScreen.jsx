@@ -242,6 +242,9 @@ export default class Homescreen extends Component {
                     }
                     authUser = { this.state.authUser }
                     logOut = { this.logOut }
+                    searchChange = { this.props.searchChange }
+                    searchSubmit = {this.props.searchSubmit}
+                    
                 />
             </div>
         )

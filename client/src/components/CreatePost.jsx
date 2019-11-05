@@ -6,6 +6,7 @@ export default class CreatePost extends Component {
     componentDidMount() {
         localStorage.getItem('userId');
         localStorage.getItem('username');
+        this.props.setStyle();
     }
 
     state = {
@@ -78,7 +79,7 @@ export default class CreatePost extends Component {
                 });
             console.log(uploadImage);
             // Create Post
-            const createPost = await fetch(`http://localhost:3001.com/api/posts`, {
+            const createPost = await fetch(`http://localhost:3001/api/posts`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -99,7 +100,6 @@ export default class CreatePost extends Component {
                     errorMassage: error.massage,
                     });
                 });
-            console.log(createPost);
         }
         window.alert('Create post success');
         window.location.href = '/create-post';

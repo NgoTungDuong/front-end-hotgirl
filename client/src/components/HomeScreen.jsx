@@ -20,11 +20,14 @@ export default class HomeScreen extends Component {
         pageSize: 4,
         data: [],
         total: 0,
+        searchString: "",
+        displayImages: [],
     }
 
     componentDidMount() {
         localStorage.getItem('userId');
         localStorage.getItem('username');
+        this.props.setStyle();
         this.setState({
             pageNumber: localStorage.pageNumber,
         })
@@ -39,11 +42,13 @@ export default class HomeScreen extends Component {
             })
                 .then(res => res.json())
                 .then(data => {
+                    console.log(data)
                     this.setState({
                         data: data.data,
                         total: data.total
                     })
                 })
+                console.log(this.state);
         } else {
             fetch(`http://localhost:3001/api/posts?pageNumber=${localStorage.pageNumber}&pageSize=${localStorage.pageSize}`,{
                 method: 'GET',
@@ -91,6 +96,40 @@ export default class HomeScreen extends Component {
             .catch((error) => console.log(error))
     }   
 
+    searchChange = (newSearchValue) => {
+        this.setState({
+            searchString: newSearchValue,
+        });
+    }
+
+    searchSubmit = async () => {
+        // console.log(this.state.data);
+        await fetch(`http://localhost:3001/api/posts?pageNumber=1&pageSize=${this.state.total}`,{
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application'
+            }
+        })  
+            .then(res => res.json())
+            .then(data => {
+                const result = [];
+                for (let i = 0; i < this.state.total; i++) {
+                    result.push(data.data[i].title);
+                }
+                for (let i = 0; i < this.state.total; i++) {
+                    result.push(data.data[i].description);
+                }
+                this.setState({
+                    displayImages: result.filter((str) => {
+                        return str.includes(this.state.searchString)
+                    })
+                });
+            })
+            .catch(error => console.log(error))
+        
+    }    
+
     render() {
         const myArray = [];
         for (let i = 0; i < Math.ceil(this.state.total / this.state.pageSize); i++) {
@@ -99,7 +138,10 @@ export default class HomeScreen extends Component {
         return (
             localStorage.length !== 0 ? (
                 <div>
-                    <Homescreen/>
+                    <Homescreen 
+                        searchChange = {this.searchChange }
+                        searchSubmit = { this.searchSubmit }
+                    />
                     <div className='container'>
                         <div className="row">
                             {this.state.data.map((item) => {

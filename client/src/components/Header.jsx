@@ -14,19 +14,20 @@ export default class Header extends Component {
     render() {
         return (
             <Navbar color='light' className='header-container'>
-                <Row className='ml-2'>
-                    <Input className='search' type='text' name='search-title' placeholder='Enter your search' />
-                    <Button outline color='success' className='mr-2 ml-2' >Search</Button>
+                <Form className='form-group mt-auto mb-auto' style={{display: 'flex', justifyContent: 'center'}}>
+                    <Input onChange={(e) => this.props.searchChange({searchString: e.target.value})} className='search' type='text' placeholder='Enter your search' />
+                    <Button onClick={this.props.searchSubmit} outline color='success' className='mr-2 ml-2' >Search</Button>
                     {localStorage.length !== 0 ? (
                         <a className='btn btn-outline-info' href='/create-post'>+ New Post</a>
                     ) : (
                         <a className='btn btn-outline-info' href='/'>+ New Post</a>
                     )}
-                </Row>
+                </Form>
                 {localStorage.length !== 0 ? (
-                    <NavbarBrand href="/homescreen">Techkids Hotgirl</NavbarBrand>
+                    <NavbarBrand href="/homescreen" style={{fontSize: '30px'}}><b>Hot Girl Social Network</b></NavbarBrand>
+                    
                 ): (
-                    <NavbarBrand href="/">Techkids Hotgirl</NavbarBrand>
+                    <NavbarBrand href="/" style={{fontSize: '30px'}}><b>Hot Girl Social Network</b></NavbarBrand>
                 )}
 
                 {this.props.authUser.userId ? (
