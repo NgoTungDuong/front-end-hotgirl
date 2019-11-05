@@ -7,7 +7,7 @@ export default class DetailScreen extends Component {
     };
     componentDidMount() {
         this._isMounted = true;
-        fetch(`https://hotgirl-back-end.herokuapp.com/api/posts/${this.props.match.params.imageId}`,{
+        fetch(`http://localhost:3001/api/posts/${this.props.match.params.imageId}`,{
             method: 'GET',
         })
             .then(res => res.json())
