@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default class HomeScreen extends Component {
     // componentDidMount() {
-    //     fetch(`http://localhost:3001/api/users`,{
+    //     fetch(`https://hotgirl-back-end.herokuapp.com/api/users`,{
     //         credentials: 'include',
     //         headers: {
     //             'Acept': 'application/json',
@@ -33,7 +33,7 @@ export default class HomeScreen extends Component {
         })
         // fetch posts
         if (!localStorage.pageNumber) {
-            fetch(`http://localhost:3001/api/posts?pageNumber=${this.state.pageNumber}&pageSize=${this.state.pageSize}`, {
+            fetch(`https://hotgirl-back-end.herokuapp.com/api/posts?pageNumber=${this.state.pageNumber}&pageSize=${this.state.pageSize}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ export default class HomeScreen extends Component {
                 })
                 console.log(this.state);
         } else {
-            fetch(`http://localhost:3001/api/posts?pageNumber=${localStorage.pageNumber}&pageSize=${localStorage.pageSize}`,{
+            fetch(`https://hotgirl-back-end.herokuapp.com/api/posts?pageNumber=${localStorage.pageNumber}&pageSize=${localStorage.pageSize}`,{
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -75,7 +75,7 @@ export default class HomeScreen extends Component {
             pageNumber: Number(event.target.innerText),
         });
         // fetch new data
-        fetch(`http://localhost:3001/api/posts?pageNumber=${event.target.innerText}&pageSize=${this.state.pageSize}`, {
+        fetch(`https://hotgirl-back-end.herokuapp.com/api/posts?pageNumber=${event.target.innerText}&pageSize=${this.state.pageSize}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application'
@@ -104,7 +104,7 @@ export default class HomeScreen extends Component {
 
     searchSubmit = async () => {
         // console.log(this.state.data);
-        await fetch(`http://localhost:3001/api/posts?pageNumber=1&pageSize=${this.state.total}`,{
+        await fetch(`https://hotgirl-back-end.herokuapp.com/api/posts?pageNumber=1&pageSize=${this.state.total}`,{
             method: 'GET',
             credentials: 'include',
             headers: {

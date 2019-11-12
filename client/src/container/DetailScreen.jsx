@@ -8,7 +8,7 @@ export default class DetailScreen extends Component {
     componentDidMount() {
         this._isMounted = true;
         this.props.setStyle();
-        fetch(`http://localhost:3001/api/posts/${this.props.match.params.imageId}`,{
+        fetch(`https://hotgirl-back-end.herokuapp.com/api/posts/${this.props.match.params.imageId}`,{
             method: 'GET',
         })
             .then(res => res.json())

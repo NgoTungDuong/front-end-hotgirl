@@ -61,7 +61,7 @@ export default class CreatePost extends Component {
             // Upload Image
             const formData = new FormData();
             formData.append('image', this.state.imageFile);
-            const uploadImage = await fetch(`http://localhost:3001/uploads/image`, {
+            const uploadImage = await fetch(`https://hotgirl-back-end.herokuapp.com/uploads/image`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -79,7 +79,7 @@ export default class CreatePost extends Component {
                 });
             console.log(uploadImage);
             // Create Post
-            const createPost = await fetch(`http://localhost:3001/api/posts`, {
+            const createPost = await fetch(`https://hotgirl-back-end.herokuapp.com/api/posts`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
